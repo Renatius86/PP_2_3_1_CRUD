@@ -14,10 +14,10 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
-    public void UserController(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -25,7 +25,7 @@ public class UserController {
     public String showAllUsers(Model model) {
         List<User> allUsers = userService.getAllUsers();
         model.addAttribute("allUsers", allUsers);
-        return"all-users";
+        return "all-users";
     }
 
     @GetMapping("/addNewUser")

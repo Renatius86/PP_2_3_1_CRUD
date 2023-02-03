@@ -5,15 +5,17 @@ import org.springframework.stereotype.Service;
 import web.dao.UserDAO;
 import web.model.User;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
 
     @Autowired
-    public void UserServiceImpl(UserDAO userDAO) {
+    public UserServiceImpl(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 
